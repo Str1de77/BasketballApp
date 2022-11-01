@@ -18,8 +18,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.str1de.basketballappkotlin.Fragments.ShotPositionFragment
 import com.str1de.basketballappkotlin.Fragments.TableShotFragment
+import com.str1de.basketballappkotlin.databinding.ActivityPositionThrowsBinding
 
 class PositionThrowsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityPositionThrowsBinding
 
     val tableShotFr = TableShotFragment()
     val shotPosFr = ShotPositionFragment()
@@ -44,12 +47,11 @@ class PositionThrowsActivity : AppCompatActivity() {
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_position_throws)
+        binding = ActivityPositionThrowsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val navBottomView = findViewById<BottomNavigationView>(R.id.bottomNavView)
-        val navigationView = findViewById<NavigationView>(R.id.nav_view)
 
-        navigationView.setNavigationItemSelectedListener {
+        binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.percent_of_throws_made -> startActivity(Intent(this, TableActivity::class.java))
                 R.id.position_throws -> startActivity(Intent(this, PositionThrowsActivity::class.java))
@@ -63,7 +65,7 @@ class PositionThrowsActivity : AppCompatActivity() {
         }
 
 
-        navBottomView.setOnItemSelectedListener {
+        binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.results_table -> {
                     supportFragmentManager.beginTransaction().hide(activeFragment).show(tableShotFr).commit()
@@ -123,7 +125,7 @@ class PositionThrowsActivity : AppCompatActivity() {
     }
 
     fun countAllThrows(): String {
-        val allThrows = ++ allHitsCounter
+        val allThrows = ++allHitsCounter
         return allThrows.toString()
     }
 

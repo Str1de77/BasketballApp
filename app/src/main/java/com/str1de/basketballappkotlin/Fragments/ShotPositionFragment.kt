@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,29 +24,21 @@ class ShotPositionFragment : Fragment() {
     private lateinit var binding: FragmentShotPositionBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //val shotsPositionImageView = view.findViewById<ImageView>(R.id.shots_position_imageView)
-        //val buttonStart = view.findViewById<Button>(R.id.position_button)
-        //val hitButton = view.findViewById<Button>(R.id.hitting_button)
-        //val missButton = view.findViewById<Button>(R.id.miss_button)
-        var allThrowsCounter = (activity as PositionThrowsActivity).countAllThrows()
-        var missThrowsCounter = (activity as PositionThrowsActivity).missCount()
-        var madeThrowsCounter = (activity as PositionThrowsActivity).hitsCount()
         var timer: Timer? = null
+
 
         binding.hittingButton.visibility = View.GONE
         binding.missButton.visibility = View.GONE
 
 
         binding.positionButton.setOnClickListener {
-            val positionText = view?.findViewById<TextView>(R.id.position_text)
             if (binding.positionButton.text == getString(R.string.start_button)) {
                 animStartButton(0f, 200f)
                 binding.positionButton.text = getString(R.string.finish_button)
                 animThrowsAndTextButtons(0f, 1f, 3000)
                 binding.hittingButton.visibility = View.VISIBLE
                 binding.missButton.visibility = View.VISIBLE
-                positionText?.visibility = View.VISIBLE
+                binding.positionText.visibility = View.VISIBLE
             } else {
                 showSaveDialog()
             }
@@ -53,15 +46,15 @@ class ShotPositionFragment : Fragment() {
 
         binding.missButton.setOnClickListener {
             checkingForThrows()
-            dataModel.messageOfMissShot.value = missThrowsCounter
-            dataModel.messageOfAllShots.value = allThrowsCounter
+            dataModel.messageOfMissShot.value = (activity as PositionThrowsActivity).missCount()
+            dataModel.messageOfAllShots.value = (activity as PositionThrowsActivity).countAllThrows()
             (activity as PositionThrowsActivity).randomPosition()
         }
 
         binding.hittingButton.setOnClickListener {
             checkingForThrows()
-            dataModel.messageOfMadeShot.value = madeThrowsCounter
-            dataModel.messageOfAllShots.value = allThrowsCounter
+            dataModel.messageOfMadeShot.value = (activity as PositionThrowsActivity).hitsCount()
+            dataModel.messageOfAllShots.value = (activity as PositionThrowsActivity).countAllThrows()
             (activity as PositionThrowsActivity).randomPosition()
         }
         binding.shotsPositionImageView.setImageBitmap(
@@ -145,7 +138,7 @@ class ShotPositionFragment : Fragment() {
     }
 
     fun checkingForThrows() {
-            if ((dataModel.messageOfAllShots.value)?.toInt() == 1) {
+            if ((dataModel.messageOfAllShots.value)?.toInt() == 9) {
                 val alertBuilder = AlertDialog.Builder(activity)
                 alertBuilder.create()
                 alertBuilder.setTitle("You made " + (dataModel.messageOfAllShots.value).toString() + " throws!")
@@ -153,9 +146,9 @@ class ShotPositionFragment : Fragment() {
                 alertBuilder.setPositiveButton("Yes") { dialog, id ->
                         val sharedPref = activity?.getSharedPreferences("myPref", Context.MODE_PRIVATE)
                     with (sharedPref?.edit()) {
-                        this?.putString("allShots", (activity as PositionThrowsActivity).countAllThrows())
-                        this?.putString("madeShots", (activity as PositionThrowsActivity).hitsCount())
-                        this?.putString("missShots", (activity as PositionThrowsActivity).missCount())
+                        this?.putString("allShots", dataModel.messageOfAllShots.value)
+                        this?.putString("madeShots", dataModel.messageOfMadeShot.value)
+                        this?.putString("missShots", dataModel.messageOfMissShot.value)
                         this?.apply()
                     }
                 }
