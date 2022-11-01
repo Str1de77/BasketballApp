@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.CloseRangeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+
+        android:layout_height="200dp"
+        android:layout_gravity="top|center_horizontal"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/ic_medium_range_foreground" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rangeTab">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/range_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Medium range training"
+                android:fontFamily="@font/fredoka_one"
+                android:textColor="@color/black"
+                android:textSize="30sp"></TextView>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_weight="7"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Number of throws"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/number_of_throws"
+                android:layout_height="48dp"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/input_number_hint"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/blue"
+                android:textColorHint="@color/grey"
+                android:textColorLink="@color/blue"
+                android:theme="@style/MyEditText" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_weight="7"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Medium range"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/specialRange"
+                android:layout_width="227dp"
+                android:layout_height="48dp"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/input_number_hint"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:theme="@style/MyEditText"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_weight="7"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="% hit of medium throws"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/percent_of_throws"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+        </TableRow>
+    </TableLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/accuracyMediumButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/corner_button"
+        style="@style/RoundedCornerButton"
+        android:fontFamily="@font/fredoka_one"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/calculate_button_string"
+        android:textColor="@color/white" />
+
+
+</FrameLayout>

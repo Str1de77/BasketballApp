@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Player1StatsFragment">
+
+    <TextView
+        android:id="@+id/titleResultsPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/fredoka_one"
+        android:text="Results of player 2"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/titleResultsPlayer2"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/table_borders"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/table_borders">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/fredoka_one"
+                android:text="Number of throws:"
+                android:textColor="@color/black"
+                android:textSize="20sp"></TextView>
+
+            <TextView
+                android:id="@+id/show_all_throws"
+                android:layout_margin="10dp"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/fredoka_one"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="20sp"></TextView>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/table_borders">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/fredoka_one"
+                android:text="Throws hits:"
+                android:textColor="@color/black"
+                android:textSize="20sp"></TextView>
+
+            <TextView
+                android:id="@+id/show_throws_hit"
+                android:layout_margin="10dp"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/fredoka_one"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="20sp"></TextView>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/table_borders">
+
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/fredoka_one"
+                android:text="Throws miss:"
+                android:textColor="@color/black"
+                android:textSize="20sp"></TextView>
+
+            <TextView
+                android:id="@+id/show_throws_miss"
+                android:layout_margin="10dp"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/fredoka_one"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="20sp"></TextView>
+        </TableRow>
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

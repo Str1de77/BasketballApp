@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/position_throws"
+            android:title="Position throws"
+            android:icon="@drawable/ic_position_throws_basketball"
+            android:orderInCategory="1">
+        </item>
+
+        <item
+            android:id="@+id/results_table"
+            android:title="Results table"
+            android:icon="@drawable/ic_table_throws"
+            android:orderInCategory="2">
+        </item>
+</menu>
