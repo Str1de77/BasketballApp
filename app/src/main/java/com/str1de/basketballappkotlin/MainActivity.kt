@@ -12,21 +12,21 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.str1de.basketballappkotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val sharedPref = getSharedPreferences("myPref", Context.MODE_PRIVATE)
         sharedPref.edit().clear().apply()
 
-        val bt1 = findViewById<Button>(R.id.table_button)
-        val txt_view = findViewById<TextView>(R.id.hello_text)
-
-        bt1.setOnClickListener {
+        binding.tableButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         }

@@ -11,9 +11,10 @@
     <color name="basketball_blue">#2F79D3</color>
     <color name="main_page_color">#67223C</color>
     <color name="second_main_page_color">#553681</color>
-    <color name="blue">#1B4091</color>
-    <color name="orange">#CF6035</color>
-    <color name="grey">#5A5959</color>
+    <color name="blue">#314C87</color>
+    <color name="blue_button">#1B4091</color>
+    <color name="orange">#FFC041</color>
+    <color name="grey">#A8A8A8</color>
     <color name="green">#08C808</color>
     <color name="red">#C80808</color>
 </resources>

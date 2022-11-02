@@ -141,7 +141,7 @@ class ShotPositionFragment : Fragment() {
             if ((dataModel.messageOfAllShots.value)?.toInt() == 9) {
                 val alertBuilder = AlertDialog.Builder(activity)
                 alertBuilder.create()
-                alertBuilder.setTitle("You made " + (dataModel.messageOfAllShots.value).toString() + " throws!")
+                alertBuilder.setTitle("You made " + ((dataModel.messageOfAllShots.value).toString().toInt() + 1) + " throws!")
                 alertBuilder.setMessage("Do you save this result?")
                 alertBuilder.setPositiveButton("Yes") { dialog, id ->
                         val sharedPref = activity?.getSharedPreferences("myPref", Context.MODE_PRIVATE)

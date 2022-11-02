@@ -1,13 +1,12 @@
 <resources>
     <string name="app_name">BasketballApp(Kotlin)</string>
     <string name="basketball_training_app">Basketball Training App</string>
-    <string name="table_button">Open table</string>
+    <string name="main_button">Get started!</string>
     <string name="training_book">Go to training book</string>
     <string name="calculate_button_string">Accuracy calculation</string>
     <string name="input_number_hint">Enter the number</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="basketball_training">Basketball training</string>
     <string name="menu_open">Open</string>
     <string name="menu_close">Close</string>
     <string name="title_activity_position_throws">PositionThrowsActivity</string>
@@ -18,7 +17,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    s<string name="main_description">Immerse yourself in the world of basketball, train your skills, progress in the level of your game with our app!</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="hit_button">Hit</string>
