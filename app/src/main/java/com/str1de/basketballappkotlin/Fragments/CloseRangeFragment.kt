@@ -1,5 +1,8 @@
 package com.str1de.basketballappkotlin.Fragments
 
+import android.animation.ValueAnimator
+import android.animation.ValueAnimator.AnimatorUpdateListener
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,16 +11,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.str1de.basketballappkotlin.R
 import com.str1de.basketballappkotlin.TableActivity
+import com.str1de.basketballappkotlin.databinding.FragmentCloseRangeBinding
 
 class CloseRangeFragment : Fragment() {
 
+    private lateinit var binding: FragmentCloseRangeBinding
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val accuracyButton: Button = view.findViewById(R.id.accuracyCloseButton)
-        accuracyButton.setOnClickListener {
-                    (activity as TableActivity).calculateAccuracy()
+            binding.accuracyCloseButton.setOnClickListener {
+                (activity as TableActivity).calculateAccuracy()
+                if (binding.percentOfThrows.currentTextColor == (R.color.red)) {
+                    binding.percentOfThrows.text =  " - Bad"
                 }
+            }
     }
 
     override fun onCreateView(
@@ -25,9 +32,8 @@ class CloseRangeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_close_range, container, false)
-
-
+        binding = FragmentCloseRangeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     companion object {

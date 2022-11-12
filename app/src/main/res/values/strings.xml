@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BasketballApp(Kotlin)</string>
+    <string name="app_name">LiveBallers</string>
     <string name="basketball_training_app">Basketball Training App</string>
     <string name="main_button">Get started!</string>
     <string name="training_book">Go to training book</string>
@@ -22,4 +22,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="hit_button">Hit</string>
     <string name="miss_button">Miss</string>
+    <string name="available_in_versions">(available later...)</string>
 </resources>

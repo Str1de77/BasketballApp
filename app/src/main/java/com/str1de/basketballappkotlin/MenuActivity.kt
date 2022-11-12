@@ -2,6 +2,7 @@ package com.str1de.basketballappkotlin
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -21,8 +22,15 @@ class MenuActivity : AppCompatActivity() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.menu_open, R.string.menu_close)
+        val availableString = " (available later...)"
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+
+        navigationView.menu.findItem(R.id.training_book_item).isVisible = false
+        navigationView.menu.findItem(R.id.curry_dribbling_challenge).isVisible = false
+        navigationView.menu.findItem(R.id.curry_shooting_challenge).isVisible = false
+        navigationView.menu.findItem(R.id.curry_finishing_challenge).isVisible = false
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {

@@ -17,9 +17,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.str1de.basketballappkotlin.Fragments.CloseRangeFragment
 import com.str1de.basketballappkotlin.Fragments.LongRangeFragment
 import com.str1de.basketballappkotlin.Fragments.MediumRangeFragment
+import com.str1de.basketballappkotlin.databinding.ActivityTableBinding
 import java.text.DecimalFormat
 
 class TableActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityTableBinding
 
     private val dataModel: ViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +31,13 @@ class TableActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.activity_table)
+        binding = ActivityTableBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val rangeTab = findViewById<TabLayout>(R.id.rangeTab)
         val vp2 = findViewById<ViewPager2>(R.id.vp2)
         val fragmentList = listOf(CloseRangeFragment.newInstance(), MediumRangeFragment.newInstance(), LongRangeFragment.newInstance())
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
+
 
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -82,21 +87,27 @@ class TableActivity : AppCompatActivity() {
                 alertBuild.setPositiveButton("OK") {dialog, id -> dialog.dismiss()}
                 alertBuild.show()
             } else {
-            val decimalPercent = DecimalFormat("#.#").format(percentOfMySpecialThrows)
+                startAnimation(percentHitOfSpecialThrows, percentOfMySpecialThrows, percentOfMySpecialThrows)
+
+
+            /*val decimalPercent = DecimalFormat("#.#").format(percentOfMySpecialThrows)
             var resultOfPercentOfMySpecialThrows = decimalPercent.toString()
             if (percentOfMySpecialThrows <= 30) {
                 percentHitOfSpecialThrows.setTextColor(getColor(R.color.red))
                 startAnimation(percentHitOfSpecialThrows, percentOfMySpecialThrows, percentOfMySpecialThrows)
-                percentHitOfSpecialThrows.setText(resultOfPercentOfMySpecialThrows)
+                animateResultOfPercent()
             } else if (percentOfMySpecialThrows > 30 && percentOfMySpecialThrows <= 70) {
                 percentHitOfSpecialThrows.setTextColor(getColor(R.color.basketball_yellow))
                 startAnimation(percentHitOfSpecialThrows, percentOfMySpecialThrows, percentOfMySpecialThrows)
-                percentHitOfSpecialThrows.setText(resultOfPercentOfMySpecialThrows)
+                animateResultOfPercent()
             } else {
                 percentHitOfSpecialThrows.setTextColor(getColor(R.color.green))
                 startAnimation(percentHitOfSpecialThrows, percentOfMySpecialThrows, percentOfMySpecialThrows)
-                percentHitOfSpecialThrows.setText(resultOfPercentOfMySpecialThrows)
+                animateResultOfPercent()
                 }
+            }
+
+             */
             }
         }
         }
@@ -105,8 +116,56 @@ class TableActivity : AppCompatActivity() {
         val animator = ValueAnimator.ofInt(0, doubleValue.toInt())
         animator.duration = 1500
         animator.addUpdateListener { animation ->
-            textView.text = animation.animatedValue.toString()
-        }
+            val percentHitOfSpecialThrows = findViewById<TextView>(R.id.percent_of_throws)
+            val decimalPercent = DecimalFormat("#.#").format(percentOfMySpecialThrows)
+            var resultOfPercentOfMySpecialThrows = decimalPercent.toString()
+            if (percentOfMySpecialThrows <= 30) {
+                percentHitOfSpecialThrows.setTextColor(getColor(R.color.red))
+                animTransition()
+                textView.text = animation.animatedValue.toString() + " - bad!"
+                animateResultOfPercent(percentHitOfSpecialThrows)
+            } else if (percentOfMySpecialThrows > 30 && percentOfMySpecialThrows <= 70) {
+                percentHitOfSpecialThrows.setTextColor(getColor(R.color.basketball_yellow))
+                animTransition()
+                textView.text = animation.animatedValue.toString() + " - normal!"
+                animateResultOfPercent(percentHitOfSpecialThrows)
+            } else {
+                percentHitOfSpecialThrows.setTextColor(getColor(R.color.green))
+                animTransition()
+                textView.text = animation.animatedValue.toString() + " - good!"
+                animateResultOfPercent(percentHitOfSpecialThrows)
+                }
+            }
         animator.start()
+        }
+
+    fun animateResultOfPercent(animatedTextView: TextView) {
+        val animator = ValueAnimator.ofFloat(0f, -50f)
+        animator.duration = 1000
+        animator.start()
+
+        animator.addUpdateListener (object: ValueAnimator.AnimatorUpdateListener {
+            override fun onAnimationUpdate(animation: ValueAnimator?) {
+                val animatedValue = animation?.animatedValue as Float
+                animatedTextView.translationX = animatedValue
+
+            }
+
+        })
     }
-}
+
+    fun animTransition() {
+        val animator = ValueAnimator.ofFloat(0f, 1f)
+        val percentHitOfSpecialThrows = findViewById<TextView>(R.id.percent_of_throws)
+        animator.duration = 1000
+        animator.start()
+        animator.addUpdateListener ( object : ValueAnimator.AnimatorUpdateListener {
+            override fun onAnimationUpdate(animation: ValueAnimator?) {
+                val animatedValue = animation?.animatedValue as Float
+                percentHitOfSpecialThrows.alpha = animatedValue
+            }
+
+        })
+        }
+    }
+

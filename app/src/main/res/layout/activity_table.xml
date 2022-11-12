@@ -19,14 +19,14 @@
         android:id="@+id/rangeTab"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@color/white"
+        android:background="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="start"
-        app:tabIndicatorColor="@color/blue"
+        app:tabIndicatorColor="@color/basketball_yellow"
         app:tabMode="auto"
-        app:tabTextColor="@color/orange">
+        app:tabTextColor="@color/basketball_yellow">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
